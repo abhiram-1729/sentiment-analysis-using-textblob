@@ -2,6 +2,8 @@
 
 A modern, responsive web application that performs real-time sentiment analysis on text input using TextBlob and FastAPI.
 
+**🌐 Live Demo: [sentiment-analysis-using-textblob.vercel.app](https://sentiment-analysis-using-textblob.vercel.app/)**
+
 ## 🚀 Features
 - **Real-time Analysis**: Instant sentiment prediction (Positive/Negative).
 - **Modern UI**: Sleek glassmorphism design with dynamic animations.
