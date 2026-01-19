@@ -1,5 +1,7 @@
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
 from pydantic import BaseModel
 from textblob import TextBlob
 
@@ -22,13 +24,14 @@ class SentimentResponse(BaseModel):
 
 @app.get("/")
 async def root():
-    return {
-        "message": "Sentiment Analysis API is running!",
-        "endpoints": {
-            "predict": "/predict (POST)",
-            "health": "/health (GET)"
-        }
-    }
+    return FileResponse("index.html")
+
+@app.get("/health")
+async def health_check():
+    return {"status": "healthy"}
+
+# Serve other static files (js, css, etc.) from the current directory
+app.mount("/", StaticFiles(directory="."), name="static")
 
 @app.post("/predict", response_model=SentimentResponse)
 async def predict_sentiment(request: SentimentRequest):
