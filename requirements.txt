@@ -3,3 +3,4 @@ uvicorn
 textblob
 pydantic
 aiofiles
+nltk

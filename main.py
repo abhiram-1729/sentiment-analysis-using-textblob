@@ -4,6 +4,14 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
 from pydantic import BaseModel
 from textblob import TextBlob
+import nltk
+
+# Download necessary NLTK data
+try:
+    nltk.download('punkt')
+    nltk.download('punkt_tab')
+except Exception as e:
+    print(f"Error downloading NLTK data: {e}")
 
 app = FastAPI()
 
@@ -29,9 +37,6 @@ async def root():
 @app.get("/health")
 async def health_check():
     return {"status": "healthy"}
-
-# Serve other static files (js, css, etc.) from the current directory
-app.mount("/", StaticFiles(directory="."), name="static")
 
 @app.post("/predict", response_model=SentimentResponse)
 async def predict_sentiment(request: SentimentRequest):
@@ -64,6 +69,11 @@ async def predict_sentiment(request: SentimentRequest):
 @app.get("/health")
 async def health_check():
     return {"status": "healthy"}
+
+# Serve other static files (js, css, etc.) from the current directory
+# This must be at the bottom to avoid intercepting API routes
+app.mount("/", StaticFiles(directory="."), name="static")
+
 
 if __name__ == "__main__":
     import uvicorn
