@@ -7,9 +7,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const confidenceBar = document.getElementById('confidence-bar');
     const sentimentIcon = document.getElementById('sentiment-icon');
 
-    // API URL - CHANGE THIS to your deployed Render URL (e.g., https://your-app.onrender.com/predict)
-    // const API_URL = 'http://localhost:8000/predict';
-    const API_URL = 'https://sentiment-analysis-using-textblob.onrender.com/predict';
+    // API URL - Using relative path since backend now serves the frontend
+    const API_URL = '/predict';
 
     const analyzeSentiment = async () => {
         const text = reviewInput.value.trim();
@@ -40,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
             displayResult(data);
         } catch (error) {
             console.error('Error:', error);
-            alert('Failed to connect to the backend. Please make sure the server is running at http://localhost:8000');
+            alert(`Failed to connect to the backend at ${API_URL}. Please ensure the server is running.`);
         } finally {
             analyzeBtn.disabled = false;
             analyzeBtn.innerHTML = '<i data-lucide="sparkles"></i> Analyze Sentiment';
