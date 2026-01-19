@@ -20,6 +20,16 @@ class SentimentResponse(BaseModel):
     sentiment: str
     confidence: float
 
+@app.get("/")
+async def root():
+    return {
+        "message": "Sentiment Analysis API is running!",
+        "endpoints": {
+            "predict": "/predict (POST)",
+            "health": "/health (GET)"
+        }
+    }
+
 @app.post("/predict", response_model=SentimentResponse)
 async def predict_sentiment(request: SentimentRequest):
     try:

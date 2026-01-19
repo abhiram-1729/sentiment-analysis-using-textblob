@@ -7,8 +7,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const confidenceBar = document.getElementById('confidence-bar');
     const sentimentIcon = document.getElementById('sentiment-icon');
 
-    // API URL - Use deployed URL if available, otherwise fallback to localhost
-    const API_URL = window.VITE_API_URL || 'http://localhost:8000/predict';
+    // API URL - CHANGE THIS to your deployed Render URL (e.g., https://your-app.onrender.com/predict)
+    // const API_URL = 'http://localhost:8000/predict';
+    const API_URL = 'https://sentiment-analysis-using-textblob.onrender.com/predict';
 
     const analyzeSentiment = async () => {
         const text = reviewInput.value.trim();
