@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SentimentAI - Real-time Analysis</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+    <div class="background-blobs">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <div class="container">
+        <header>
+            <h1>Sentiment Analysis AI</h1>
+            <p>Enter your text below to analyze the emotional tone instantly.</p>
+        </header>
+
+        <main>
+            <div class="input-card glass">
+                <textarea id="review-input" placeholder="Type or paste your text here..." rows="6"></textarea>
+                <button id="analyze-btn">
+                    <i data-lucide="sparkles"></i>
+                    Analyze Sentiment
+                </button>
+            </div>
+
+            <div id="result-container" class="result-card glass hidden">
+                <div class="sentiment-indicator">
+                    <div id="sentiment-icon"></div>
+                    <div class="sentiment-details">
+                        <h2 id="sentiment-text">-</h2>
+                        <p id="confidence-text">Confidence: 0%</p>
+                    </div>
+                </div>
+                <div class="confidence-bar-container">
+                    <div id="confidence-bar" class="confidence-bar"></div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>Powered by Scikit-Learn & FastAPI</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
